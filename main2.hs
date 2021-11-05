@@ -33,10 +33,10 @@ filtraEmpleados str
 {-Creamos la lista a mostrar-}
 creaLista :: [String] -> [String] -> Float -> ([String], Float )
 creaLista [] s y = (s, y)
-creaLista w s y = creaLista (tail w) (s ++ [formattedString]) (y + devuelveFloat (desnormalizar  substract))
+creaLista w s y = creaLista (tail w) (s ++ [formatea]) (y + devuelveFloat (desnormalizar  desnormali))
   where
-    substract = crearHoras 2 (head w)
-    formattedString = filtrarCampo 0 (head w) ++ " " ++ filtrarCampo 1 (head w) ++ " " ++ show substract
+    desnormali = crearHoras 2 (head w)
+    formatea = filtrarCampo 0 (head w) ++ " " ++ filtrarCampo 1 (head w) ++ " " ++ show desnormali
 --esta funcion hace que los resultados sean float
 devuelveFloat :: Int -> Float
 devuelveFloat n = read $ show n :: Float
