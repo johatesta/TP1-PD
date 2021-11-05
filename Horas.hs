@@ -39,6 +39,6 @@ tomarMinuto h = h `mod` 60
 normalizar :: Int -> Hora
 normalizar x = Hora (tomarHora x) (tomarMinuto x)
 
-diferenciaHoraria :: Hora -> Hora -> Int
-diferenciaHoraria h1 h2 = abs (desnormalizar h1 - desnormalizar h2)
+diferenciaHoraria :: Hora -> Hora -> Hora
+diferenciaHoraria  (Hora x y) (Hora a b) = normalizar  (desnormalizar  (Hora x y) - desnormalizar  (Hora a b))
 
