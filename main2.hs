@@ -2,7 +2,7 @@
 import System.IO 
 import Data.List 
 import Horas
-import Graphics.Win32.Control (createListBox)
+
 
 main :: IO ()
 main = do
@@ -11,11 +11,17 @@ main = do
   let lineas = lines contenido
       registros = filter filtrarRenglones lineas
       tuplas = creaLista registros [""] 0
+      infomecompleto= show tuplas
       empleados = length  $filter filtraEmpleados lineas
+      cantidadEmpleados = ["Total de empleados listados: " ++ show empleados] 
       totaldehoras = snd tuplas / 60
+      imprimetotalhoras= ["Cantidad de horas trabajadas" ++ show totaldehoras ++ "Horas"]
       promedioHorasHombre = totaldehoras / devuelveFloat empleados
+      imprimehorasHombre= ["Cantidad de Horas/Hombre" ++ show promedioHorasHombre ++ "Horas"]
       promediohorasdiarias = promedioHorasHombre / 20
-  putStrLn (unlines (fst tuplas) ++ "\n" ++ show totaldehoras ++ "\n" ++ show promedioHorasHombre ++ "\n" ++ show promediohorasdiarias)
+      imprimehorasdiarias= ["Promedio de horas diarias" ++ show promediohorasdiarias ++ "Horas"]
+      mostrar=  cantidadEmpleados ++ imprimetotalhoras ++ imprimehorasHombre ++ imprimehorasdiarias 
+  putStrLn (unlines (fst tuplas) ++ "\n" ++ show empleados ++ "\n" ++ show totaldehoras ++ "\n" ++ show promedioHorasHombre ++ "\n" ++ show promediohorasdiarias)
   hClose archivo
 
 filtrarRenglones :: String -> Bool
